@@ -11,7 +11,7 @@ function render() {
         const name = names[i];
         const number = numbers[i];
         content.innerHTML += `
-            <div>
+            <div class="card">
                 <b>Name: </b> ${name} <br>
                 <b>Telefonnummer: </b> ${number} <br>
             </div>
