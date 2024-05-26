@@ -9,6 +9,7 @@ function addContact() {
     numbers.push(phone.value);
 
     render();
+    save();
 }
 
 function deleteContact(i) {
@@ -16,6 +17,14 @@ function deleteContact(i) {
     numbers.splice(i, 1);
 
     render();
+    save();
+}
+
+function save() {
+    let namesAsText = JSON.stringify(names);
+    let numbersAsText = JSON.stringify(numbers);
+    localStorage.setItem('names', namesAsText);
+    localStorage.setItem('numbers', numbersAsText);
 }
 
 function render() {
