@@ -1,30 +1,39 @@
 let names = ["Erica Mustermann", "John Doe"];
 let numbers = ["02161123456", "02161456789"];
-
+load();
 
 function addContact() {
-    let name = document.getElementById('name');
-    let phone = document.getElementById('phone');
-    names.push(name.value);
-    numbers.push(phone.value);
+  let name = document.getElementById("name");
+  let phone = document.getElementById("phone");
+  names.push(name.value);
+  numbers.push(phone.value);
 
-    render();
-    save();
+  render();
+  save();
 }
 
 function deleteContact(i) {
-    names.splice(i, 1);
-    numbers.splice(i, 1);
+  names.splice(i, 1);
+  numbers.splice(i, 1);
 
-    render();
-    save();
+  render();
+  save();
 }
 
 function save() {
-    let namesAsText = JSON.stringify(names);
-    let numbersAsText = JSON.stringify(numbers);
-    localStorage.setItem('names', namesAsText);
-    localStorage.setItem('numbers', numbersAsText);
+  let namesAsText = JSON.stringify(names);
+  let numbersAsText = JSON.stringify(numbers);
+  localStorage.setItem("names", namesAsText);
+  localStorage.setItem("numbers", numbersAsText);
+}
+
+function load() {
+  let namesAsText = localStorage.getItem("names");
+  let numbersAsText = localStorage.getItem("numbers");
+  if (namesAsText && numbersAsText) {
+    names = JSON.parse(namesAsText);
+    numbers = JSON.parse(numbersAsText);
+  }
 }
 
 function render() {
